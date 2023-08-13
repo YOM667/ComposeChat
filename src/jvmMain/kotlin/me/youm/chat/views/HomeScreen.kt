@@ -41,14 +41,19 @@ fun HomeScreen(
         constraintsScope.launch {
             delay(waitTime.toLong())
             move = true
-        }
-        constraintsScope.launch {
-            delay(waitTime.toLong() + (transitionTime * 0.2).toLong())
+            delay(transitionTime.toLong())
             show = true
-            delay(transitionTime.toLong()) // wait transition animation is finished
+            delay(0.1.second.toLong())
             setShow(true)
         }
+        constraintsScope.launch {
+
+        }
+        constraintsScope.launch {
+
+        }
     }
+
     val transition = animateFloatAsState(
         targetValue = if (move) -116f else 0f,
         animationSpec = tween(durationMillis = transitionTime, easing = LinearOutSlowInEasing)

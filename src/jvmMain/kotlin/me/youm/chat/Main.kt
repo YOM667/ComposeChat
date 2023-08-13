@@ -47,6 +47,7 @@ fun App() {
     var globalShow by remember { mutableStateOf(false) }
     val chats = remember { mutableStateListOf<Chat>() }
     ComposeTheme(true) {
+
         Box{
             CustomNavigationHost(navController){navController ->
                 navController.composable(Screen.HomeScreen.name){

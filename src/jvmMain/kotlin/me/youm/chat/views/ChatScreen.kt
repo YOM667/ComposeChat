@@ -26,11 +26,11 @@ fun ChatScreen(
 ) {
     var text by remember { mutableStateOf("") }
     var send by remember { mutableStateOf(false) }
-
     Box(
         modifier = Modifier.fillMaxWidth(1f).fillMaxHeight(1f)
             .padding(top = 80.dp)
     ) {
+
         val scrollState = rememberScrollState()
         LaunchedEffect(chats.size){
             scrollState.animateScrollTo(scrollState.maxValue)
