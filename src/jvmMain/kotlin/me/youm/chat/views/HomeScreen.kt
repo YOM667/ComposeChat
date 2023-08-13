@@ -21,14 +21,17 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import me.youm.chat.theme.LightPurpleColorPalette
+import me.youm.chat.theme.LightGreenColor
 import me.youm.chat.utils.second
 
-var globalShow: Boolean = false
+/*var globalShow: Boolean = false*/
 val transitionTime = 1.0.second
 val waitTime = 2.0.second
 @Composable
-fun HomeScreen(){
+fun HomeScreen(
+    globalShow: Boolean,
+    setShow: (Boolean) -> Unit
+){
 
     var show by remember { mutableStateOf(false) }
     var move by remember { mutableStateOf(false) }
@@ -38,10 +41,12 @@ fun HomeScreen(){
         constraintsScope.launch {
             delay(waitTime.toLong())
             move = true
-            delay((transitionTime * 0.2).toLong())
+        }
+        constraintsScope.launch {
+            delay(waitTime.toLong() + (transitionTime * 0.2).toLong())
             show = true
             delay(transitionTime.toLong()) // wait transition animation is finished
-            globalShow = true
+            setShow(true)
         }
     }
     val transition = animateFloatAsState(
@@ -60,7 +65,7 @@ fun HomeScreen(){
             Icon(
                 imageVector = Icons.Rounded.Send,
                 contentDescription = null,
-                tint = LightPurpleColorPalette.primary
+                tint = LightGreenColor.primary
             )
         }
         AnimatedVisibility(
@@ -70,7 +75,7 @@ fun HomeScreen(){
         ) {
             Text(
                 text = "Compose Chat",
-                color = LightPurpleColorPalette.primary,
+                color = LightGreenColor.primary,
                 textAlign = TextAlign.Center,
                 style = MaterialTheme.typography.h3,
                 fontFamily = FontFamily.Monospace,

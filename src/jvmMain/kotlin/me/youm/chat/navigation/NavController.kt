@@ -2,10 +2,6 @@ package me.youm.chat.navigation
 
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
-import me.youm.chat.views.ChatScreen
-import me.youm.chat.views.HomeScreen
-import me.youm.chat.views.Screen
-import me.youm.chat.views.SettingScreen
 
 
 /**
@@ -62,18 +58,9 @@ fun rememberNavController(
 @Composable
 fun CustomNavigationHost(
     navController: NavController,
-
+    route: @Composable (NavigationHost.NavigationGraphBuilder) -> Unit,
 ) {
     NavigationHost(navController) {
-        composable(Screen.HomeScreen.name) {
-            HomeScreen()
-        }
-        composable(Screen.ChatRoomScreen.name) {
-            ChatScreen()
-        }
-        composable(Screen.SettingsScreen.name) {
-            SettingScreen()
-        }
-
+        route(this)
     }.build()
 }

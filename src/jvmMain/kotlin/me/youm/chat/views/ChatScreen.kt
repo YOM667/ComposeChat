@@ -7,22 +7,25 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import me.youm.chat.components.*
-import me.youm.chat.theme.LightPurpleColorPalette
+import me.youm.chat.theme.LightGreenColor
 import me.youm.chat.theme.OtherChatBox
 import me.youm.chat.theme.UserChatBox
 import me.youm.chat.user
 import java.util.*
 
 @Composable
-fun ChatScreen() {
+fun ChatScreen(
+    chats: SnapshotStateList<Chat>,
+    addChat: (Chat)->Unit
+) {
     var text by remember { mutableStateOf("") }
     var send by remember { mutableStateOf(false) }
-    val chats = remember { mutableStateListOf<Chat>() }
 
     Box(
         modifier = Modifier.fillMaxWidth(1f).fillMaxHeight(1f)
@@ -38,8 +41,8 @@ fun ChatScreen() {
         ) {
 
             if (text.isNotBlank() && send) {
-                chats.add(Chat(user, text, Type.HIDE, Date()))
-                chats.add(Chat(User("SB",Sex.FEMALE), text, Type.HIDE, Date()))
+                addChat(Chat(user, text, Type.HIDE, Date()))
+                addChat(Chat(User("SB",Sex.FEMALE), text, Type.HIDE, Date()))
                 send = !send
                 text = ""
             }else{
@@ -54,7 +57,7 @@ fun ChatScreen() {
                         )
                     ) {
                         UserChat(user, message.message, message.date, Arrangement.End, UserChatBox,
-                            LightPurpleColorPalette.primary)
+                            LightGreenColor.primary)
                     }
                 }else{
                     AnimatedVisibility(
