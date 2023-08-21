@@ -18,39 +18,39 @@ val green600 = Color(0xFF7BD067)
 val LightGreenColor = lightColors(
     primary = green300,
     primaryVariant = green600,
-    onPrimary = green300,
+    onPrimary = Color.White,
 
     secondary = green100,
     secondaryVariant = green600,
-    onSecondary = purple300,
-    //不能动了
+    onSecondary = Color.White,
+
     background = Color.White,
     onBackground = Color.White,
-    //不能动了
+
     surface = Color.White,
     onSurface = green600,
-    //不能动了
-    error = Color.Red,
-    onError = Color.Red
+
+    error = Color(230,40,40),
+    onError = Color.White
 )
 
 val LightPurpleColor = lightColors(
     primary = purple300,
     primaryVariant = purple600,
-    onPrimary = purple300,
+    onPrimary = Color.White,
 
     secondary = purple100,
     secondaryVariant = purple600,
-    onSecondary = purple300,
+    onSecondary = Color.White,
 
     background = Color.White,
     onBackground = Color.White,
 
-    surface = Color.White,
-    onSurface = purple600,
+    surface = purple600,
+    onSurface = Color.White,
 
-    error = Color.Red,
-    onError = Color.Red
+    error = Color(230,40,40),
+    onError = Color.White
 )
 @Composable
 fun ComposeTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable() () -> Unit) {

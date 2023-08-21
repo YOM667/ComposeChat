@@ -21,39 +21,32 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import me.youm.chat.ComposeChat
 import me.youm.chat.theme.LightGreenColor
 import me.youm.chat.utils.second
 
-/*var globalShow: Boolean = false*/
 val transitionTime = 1.0.second
-val waitTime = 2.0.second
 @Composable
-fun HomeScreen(
-    globalShow: Boolean,
-    setShow: (Boolean) -> Unit
-){
-
+fun HomeScreen(globalShow:MutableState<Boolean>){
     var show by remember { mutableStateOf(false) }
     var move by remember { mutableStateOf(false) }
+    var wait by remember { mutableStateOf(true) }
     val constraintsScope = rememberCoroutineScope()
-
     remember {
         constraintsScope.launch {
-            delay(waitTime.toLong())
-            move = true
-            delay(transitionTime.toLong())
-            show = true
-            delay(0.1.second.toLong())
-            setShow(true)
-        }
-        constraintsScope.launch {
-
-        }
-        constraintsScope.launch {
-
+            if(ComposeChat.client.socketState){
+                move = true
+                delay(transitionTime.toLong())
+                show = true
+                delay(0.1.second.toLong())
+                globalShow.value = true
+            }else{
+                while (!wait){
+                    wait = ComposeChat.client.socketState
+                }
+            }
         }
     }
-
     val transition = animateFloatAsState(
         targetValue = if (move) -116f else 0f,
         animationSpec = tween(durationMillis = transitionTime, easing = LinearOutSlowInEasing)
@@ -64,7 +57,7 @@ fun HomeScreen(
     ) {
         Surface(
             modifier = Modifier.size(92.dp).graphicsLayer {
-                this.translationY = if(globalShow) -116f else transition.value
+                this.translationY = transition.value
             }.align(Alignment.Center)
         ) {
             Icon(
@@ -75,7 +68,7 @@ fun HomeScreen(
         }
         AnimatedVisibility(
             modifier = Modifier.align(Alignment.Center),
-            visible = if(globalShow) true else show,
+            visible = show,
             enter = fadeIn(), exit = fadeOut()
         ) {
             Text(
