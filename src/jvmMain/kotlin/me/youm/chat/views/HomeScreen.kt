@@ -4,6 +4,7 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.*
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
@@ -14,6 +15,7 @@ import androidx.compose.material.icons.rounded.Send
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -22,7 +24,7 @@ import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import me.youm.chat.ComposeChat
-import me.youm.chat.theme.LightGreenColor
+import me.youm.chat.theme.LightPurpleColor
 import me.youm.chat.utils.second
 
 val transitionTime = 1.0.second
@@ -63,7 +65,8 @@ fun HomeScreen(globalShow:MutableState<Boolean>){
             Icon(
                 imageVector = Icons.Rounded.Send,
                 contentDescription = null,
-                tint = LightGreenColor.primary
+                modifier = Modifier.background(Color.White),
+                tint = LightPurpleColor.primary
             )
         }
         AnimatedVisibility(
@@ -73,7 +76,7 @@ fun HomeScreen(globalShow:MutableState<Boolean>){
         ) {
             Text(
                 text = "Compose Chat",
-                color = LightGreenColor.primary,
+                color = LightPurpleColor.primary,
                 textAlign = TextAlign.Center,
                 style = MaterialTheme.typography.h3,
                 fontFamily = FontFamily.Monospace,

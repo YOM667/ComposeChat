@@ -13,7 +13,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.unit.dp
 
-import me.youm.chat.theme.LightGreenColor
+import me.youm.chat.theme.LightPurpleColor
 
 
 @Composable
@@ -25,7 +25,7 @@ fun HeadImage(user: User){
             modifier = Modifier.padding(top = 16.dp)
                 .size(64.dp)
                 .clip(RoundedCornerShape(10.dp)),
-            colorFilter = ColorFilter.tint(LightGreenColor.primary)
+            colorFilter = ColorFilter.tint(LightPurpleColor.primary)
         )
     }else{
         Image(

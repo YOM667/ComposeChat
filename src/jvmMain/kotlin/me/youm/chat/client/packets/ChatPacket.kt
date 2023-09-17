@@ -8,3 +8,6 @@ data class ChatPacket(
     var sender: User,
     var date: Date
 )
+enum class Packets {
+    CHAT,HEARTBEAT
+}

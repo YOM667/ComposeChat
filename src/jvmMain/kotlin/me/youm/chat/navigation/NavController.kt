@@ -23,7 +23,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import me.youm.chat.ComposeChat
 import me.youm.chat.components.Chat
-import me.youm.chat.theme.LightGreenColor
+import me.youm.chat.theme.LightPurpleColor
 import me.youm.chat.views.*
 
 
@@ -101,7 +101,6 @@ fun Router(
     CoroutineScope(Dispatchers.IO).launch {
         ComposeChat.client.reader(chats::add)
     }
-    print("你好")
     CustomNavigationHost(navController){navController ->
         navController.composable(Screen.HomeScreen.label){
             HomeScreen(globalShow)
@@ -119,7 +118,7 @@ fun Router(
 fun TopBar(globalShow: MutableState<Boolean>,setCurrentScreen: (String) -> Unit){
     Box(
         modifier = Modifier.shadow(8.dp)
-            .background(LightGreenColor.primary)
+            .background(LightPurpleColor.primary)
             .fillMaxWidth()
             .padding(bottom = 8.dp)
             .height(80.dp),

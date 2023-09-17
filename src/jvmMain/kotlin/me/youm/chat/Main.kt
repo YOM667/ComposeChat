@@ -36,8 +36,7 @@ fun main(){
         Window(
             onCloseRequest = {
                 ComposeChat.client.socket.close()
-                this.exitApplication()
-                             },
+                this.exitApplication() },
             state = rememberWindowState(
                 size = DpSize(1280.dp,800.dp),
                 position = WindowPosition.Aligned(Alignment.Center)

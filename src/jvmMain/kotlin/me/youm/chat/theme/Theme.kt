@@ -53,9 +53,9 @@ val LightPurpleColor = lightColors(
     onError = Color.White
 )
 @Composable
-fun ComposeTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable() () -> Unit) {
+fun ComposeTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit) {
     val colors = if (darkTheme) {
-        LightGreenColor
+        LightPurpleColor
     } else {
         LightPurpleColor
     }

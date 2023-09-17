@@ -13,7 +13,8 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import me.youm.chat.ComposeChat
-import me.youm.chat.theme.LightGreenColor
+import me.youm.chat.theme.LightPurpleColor
+import me.youm.chat.theme.LightPurpleColor
 import me.youm.chat.theme.OtherChatBox
 import me.youm.chat.theme.UserChatBox
 
@@ -24,7 +25,7 @@ import java.util.Date
 @Composable
 fun UserChat(chat: Chat){
     val isNativeUser = chat.user === ComposeChat.user
-    val color = if(isNativeUser) LightGreenColor.primary else Color.White
+    val color = if(isNativeUser) LightPurpleColor.primary else Color.White
     val shape = if(isNativeUser) UserChatBox else OtherChatBox
     Surface{
         Row(

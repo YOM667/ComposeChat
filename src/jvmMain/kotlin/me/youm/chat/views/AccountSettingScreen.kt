@@ -13,7 +13,7 @@ import androidx.compose.ui.unit.dp
 import me.youm.chat.ComposeChat
 import me.youm.chat.components.Account
 import me.youm.chat.components.HeadImage
-import me.youm.chat.theme.LightGreenColor
+import me.youm.chat.theme.LightPurpleColor
 
 @Composable
 fun AccountSettingScreen(){
@@ -26,7 +26,7 @@ fun AccountSettingScreen(){
                 modifier = Modifier.align(Alignment.CenterHorizontally),
                 text = "User: ${ComposeChat.user.nickName}",
                 style = MaterialTheme.typography.h5,
-                color = LightGreenColor.primary,
+                color = LightPurpleColor.primary,
                 fontWeight = FontWeight.Bold
             )
             Surface(modifier = Modifier.align(Alignment.CenterHorizontally)) {
@@ -41,7 +41,7 @@ fun AccountSettingScreen(){
                     .shadow(8.dp),
                 onClick = {},
                 colors = ButtonDefaults.buttonColors(
-                    backgroundColor = LightGreenColor.error
+                    backgroundColor = LightPurpleColor.error
                 )
             ){
 
